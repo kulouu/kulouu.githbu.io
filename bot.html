@@ -11,6 +11,7 @@
         align-items: center;
         height: 100vh;
         margin: 0;
+        background-color: #f0f0f0;
     }
     #imageBtn {
         padding: 10px 20px;
@@ -19,25 +20,30 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        margin-bottom: 20px;
     }
 </style>
 </head>
 <body>
-    <button id="imageBtn">ip adresleri girmek için tıkla</button>
+    <button id="imageBtn">ip girmek için tıkla</button>
     <script>
+        var audio = new Audio('muzik.mp3'); 
+        var isPlaying = false;
+
         document.getElementById('imageBtn').addEventListener('click', function() {
             openFullscreen('resim.png');
+            toggleMusic();
         });
 
         function openFullscreen(imageUrl) {
             var elem = document.documentElement;
             if (elem.requestFullscreen) {
                 elem.requestFullscreen();
-            } else if (elem.mozRequestFullScreen) { /* Firefox */
+            } else if (elem.mozRequestFullScreen) { 
                 elem.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+            } else if (elem.webkitRequestFullscreen) {
                 elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) { /* IE/Edge */
+            } else if (elem.msRequestFullscreen) { 
                 elem.msRequestFullscreen();
             }
 
@@ -54,20 +60,32 @@
             document.body.appendChild(img);
         }
 
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                audio.play();
+            }
+            isPlaying = !isPlaying;
+        }
+
         function exitFullscreen() {
             if (document.exitFullscreen) {
                 document.exitFullscreen();
-            } else if (document.mozCancelFullScreen) { /* Firefox */
+            } else if (document.mozCancelFullScreen) { 
                 document.mozCancelFullScreen();
-            } else if (document.webkitExitFullscreen) { /* Chrome, Safari & Opera */
+            } else if (document.webkitExitFullscreen) { 
                 document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) { /* IE/Edge */
+            } else if (document.msExitFullscreen) { 
                 document.msExitFullscreen();
             }
 
             var img = document.querySelector('img');
             if (img) {
                 img.remove();
+            }
+            if (isPlaying) {
+                toggleMusic();
             }
         }
     </script>
