@@ -7,28 +7,33 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      /* Arka plan müziği */
       background: url('https://media.tenor.com/Hi_RC8h5MpkAAAAe/angry-anime-girl-anime-girl-angry.png') no-repeat center center fixed;
       background-size: cover;
     }
 
-    #movingImage {
+    .movingImage {
+     
       position: absolute;
       width: 100px;
       height: 100px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       animation: moveImage 5s linear infinite;
     }
 
     @keyframes moveImage {
-      0% { left: 0; top: 0; }
-      50% { left: 50%; top: 50%; opacity: 0.5; transform: scale(1.2); }
-      100% { left: 100%; top: 100%; opacity: 0; transform: scale(0.8); }
+      0% { 
+        transform: translate(-50%, -50%) translateX(-100vw);
+      }
+      100% { 
+        transform: translate(-50%, -50%) translateX(100vw);
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>xd</h1>
   </div>
 
   <audio id="myAudio" autoplay loop>
@@ -41,34 +46,17 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <script>
-    var imageWidth = 100;
-    var imageHeight = 100;
-
     $(document).ready(function(){
-      moveImage();
+      addMovingImage();
     });
 
-    function moveImage() {
-      var screenWidth = $(window).width();
-      var screenHeight = $(window).height();
-
-      var randomX = Math.floor(Math.random() * (screenWidth - imageWidth));
-      var randomY = Math.floor(Math.random() * (screenHeight - imageHeight));
-
-      $("#movingImage").css({"left": randomX, "top": randomY});
-
-      var randomInterval = Math.floor(Math.random() * 2000) + 1000;
-
-      setTimeout(moveImage, randomInterval);
-    }
-
-    function redirectToDiscord() {
-      setTimeout(function() {
-        window.location.href = "https://discord.gg/bizbizeyiz";
-      }, 5000);
+    function addMovingImage() {
+      var newImage = document.createElement('img');
+      newImage.src = 'https://media.tenor.com/Hi_RC8h5MpkAAAAe/angry-anime-girl-anime-girl-angry.png'; 
+      newImage.alt = 'Moving Image';
+      newImage.className = 'movingImage';
+      document.body.appendChild(newImage);
     }
   </script>
-
-  <img id="movingImage" src="https://media.tenor.com/Hi_RC8h5MpkAAAAe/angry-anime-girl-anime-girl-angry.png" alt="Moving Image">
 </body>
 </html>
