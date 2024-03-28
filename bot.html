@@ -1,93 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
-<style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #f0f0f0;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xddd</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    #movingImage {
+      position: absolute;
+      width: 100px; 
+      height: 100px; 
+      animation: moveImage 5s linear infinite; 
     }
-    #imageBtn {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-bottom: 20px;
+
+    @keyframes moveImage {
+      0% { left: 0; top: 0; }
+      50% { left: 50%; top: 50%; opacity: 0.5; transform: scale(1.2); } 
+      100% { left: 100%; top: 100%; opacity: 0; transform: scale(0.8); } 
     }
-</style>
+  </style>
 </head>
 <body>
-    <button id="imageBtn">ip girmek için tıkla</button>
-    <script>
-        var audio = new Audio('muzik.mp3'); 
-        var isPlaying = false;
+  <div class="container">
+    <h1>xd</h1>
+    <audio id="myAudio" controls autoplay>
+      <source src="xdddd.mp3" type="audio/mpeg">
+yok
+    </audio>
+  </div>
 
-        document.getElementById('imageBtn').addEventListener('click', function() {
-            openFullscreen('resim.png');
-            toggleMusic();
-        });
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        function openFullscreen(imageUrl) {
-            var elem = document.documentElement;
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.mozRequestFullScreen) { 
-                elem.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullscreen) {
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) { 
-                elem.msRequestFullscreen();
-            }
-
-            var img = new Image();
-            img.src = imageUrl;
-            img.style.width = '100%';
-            img.style.height = '100%';
-            img.style.objectFit = 'contain';
-            img.style.position = 'absolute';
-            img.style.top = '0';
-            img.style.left = '0';
-            img.style.zIndex = '9999';
-            img.onclick = exitFullscreen;
-            document.body.appendChild(img);
-        }
-
-        function toggleMusic() {
-            if (isPlaying) {
-                audio.pause();
-            } else {
-                audio.play();
-            }
-            isPlaying = !isPlaying;
-        }
-
-        function exitFullscreen() {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.mozCancelFullScreen) { 
-                document.mozCancelFullScreen();
-            } else if (document.webkitExitFullscreen) { 
-                document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) { 
-                document.msExitFullscreen();
-            }
-
-            var img = document.querySelector('img');
-            if (img) {
-                img.remove();
-            }
-            if (isPlaying) {
-                toggleMusic();
-            }
-        }
-    </script>
+  <img id="movingImage" src="https://media.tenor.com/Hi_RC8h5MpkAAAAe/angry-anime-girl-anime-girl-angry.png" alt="Moving Image">
 </body>
 </html>
