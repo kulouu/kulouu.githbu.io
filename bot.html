@@ -11,8 +11,7 @@
       background-size: cover;
     }
 
-    .movingImage {
-     
+    .movingImage {     
       position: absolute;
       width: 100px;
       height: 100px;
@@ -36,7 +35,7 @@
   <div class="container">
   </div>
 
-  <audio id="myAudio" autoplay loop>
+  <audio id="myAudio" loop>
     <source src="xdddd.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
@@ -47,6 +46,11 @@
 
   <script>
     $(document).ready(function(){
+      // Müziği başlat
+      var myAudio = document.getElementById('myAudio');
+      myAudio.play();
+
+      // Resmi ekle
       addMovingImage();
     });
 
@@ -57,6 +61,11 @@
       newImage.className = 'movingImage';
       document.body.appendChild(newImage);
     }
+     function redirectToDiscord() {
+      setTimeout(function() {
+        window.location.href = "https://discord.gg/bizbizeyiz";
+      }, 5000); // 5 saniye sonra yönlendir
+    }
   </script>
 </body>
-</html>
+</html> 
