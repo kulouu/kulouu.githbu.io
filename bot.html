@@ -6,28 +6,35 @@
   <title>okay</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    body {
+      /* Arka plan müziği */
+      background: url('https://media.tenor.com/Hi_RC8h5MpkAAAAe/angry-anime-girl-anime-girl-angry.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+
     #movingImage {
       position: absolute;
-      width: 100px; 
-      height: 100px; 
+      width: 100px;
+      height: 100px;
       animation: moveImage 5s linear infinite;
     }
 
     @keyframes moveImage {
       0% { left: 0; top: 0; }
-      50% { left: 50%; top: 50%; opacity: 0.5; transform: scale(1.2); } 
-      100% { left: 100%; top: 100%; opacity: 0; transform: scale(0.8); } 
+      50% { left: 50%; top: 50%; opacity: 0.5; transform: scale(1.2); }
+      100% { left: 100%; top: 100%; opacity: 0; transform: scale(0.8); }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>xd</h1>
-    <audio id="myAudio" controls autoplay>
-      <source src="xdddd.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
   </div>
+
+  <audio id="myAudio" autoplay loop>
+    <source src="xdddd.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
@@ -42,19 +49,20 @@
     });
 
     function moveImage() {
-      var screenWidth = $(window).width(); 
-      var screenHeight = $(window).height(); 
+      var screenWidth = $(window).width();
+      var screenHeight = $(window).height();
 
       var randomX = Math.floor(Math.random() * (screenWidth - imageWidth));
       var randomY = Math.floor(Math.random() * (screenHeight - imageHeight));
 
       $("#movingImage").css({"left": randomX, "top": randomY});
 
-      var randomInterval = Math.floor(Math.random() * 2000) + 1000; 
+      var randomInterval = Math.floor(Math.random() * 2000) + 1000;
 
       setTimeout(moveImage, randomInterval);
     }
-     function redirectToDiscord() {
+
+    function redirectToDiscord() {
       setTimeout(function() {
         window.location.href = "https://discord.gg/bizbizeyiz";
       }, 5000);
